@@ -55,7 +55,7 @@ resource "aws_security_group" "web_app" {
 }
 
 resource "aws_instance" "webapp_instance" {
-  ami           = "ami-0989b69734e6a81ba"
+  ami           = "ami-0866a3c8686eaeeba"
   instance_type = "t3.micro"
   security_groups= ["web_app"]
 user_data = <<-EOF
