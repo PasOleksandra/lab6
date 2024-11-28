@@ -49,9 +49,20 @@ resource "aws_security_group" "web_app" {
 }
 
 resource "aws_instance" "webapp_instance" {
-  ami           = "ami-0669b163befffbdfc"
-  instance_type = "t2.micro"
+  ami           = "ami-0866a3c8686eaeeba"
+  instance_type = "t3.micro"
   security_groups= ["web_app"]
+user_data = <<-EOF
+  #!/bin/bash
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  newgrp docker
+  docker pull  sshkp/aws:latest
+  docker run -it sshkp/aws:latest
+
+  EOF
   tags = {
     Name = "webapp_instance"
   }
