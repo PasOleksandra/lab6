@@ -36,6 +36,12 @@ resource "aws_security_group" "web_app" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+ ingress {
+    from_port   = 8088
+    to_port     = 8088
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   egress {
     from_port   = 0
     to_port     = 65535
@@ -60,7 +66,7 @@ user_data = <<-EOF
   sudo usermod -aG docker $USER
   newgrp docker
   docker pull  sshkp/aws:latest
-  docker run -it sshkp/aws:latest
+  docker run -id -p 8088:8088 sshkp/aws:latest
 
   EOF
   tags = {
