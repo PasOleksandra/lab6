@@ -54,11 +54,11 @@ resource "aws_security_group" "web_app" {
   }
 }
 
-resource "aws_instance" "webapp_instance" {
+resource "aws_instance" "web_instance" {
   ami           = "ami-0866a3c8686eaeeba"
   instance_type = "t3.micro"
   security_groups= ["web_app"]
-user_data = <<-EOF
+  user_data = <<-EOF
   #!/bin/bash
   curl -fsSL https://get.docker.com -o get-docker.sh
   sudo sh get-docker.sh
