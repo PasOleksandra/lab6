@@ -5,12 +5,19 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+  } 
+backend "s3" {
+    bucket = "lab-my-tf-statee"
+    key = "terraform.tfstate"
+    region = "us-east-1"
+    dynamodb_table = "lab-my-tf-lockid" 
+
   }
 }
 
 # Configure the AWS provider
 provider "aws" {
-  region     = "eu-central-1"
+  region     = "eu-east-1"
 }
 
 resource "aws_security_group" "web_app" {
