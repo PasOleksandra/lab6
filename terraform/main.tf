@@ -17,7 +17,7 @@ backend "s3" {
 
 # Configure the AWS provider
 provider "aws" {
-  region     = "eu-east-1"
+  region     = "us-east-1"
 }
 
 resource "aws_security_group" "web_app" {
