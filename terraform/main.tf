@@ -72,8 +72,8 @@ resource "aws_instance" "web_instance" {
   sudo systemctl restart docker
 
   # Pull and run the Docker container
-  docker pull sshkp/aws:latest
-  sudo docker run -id -p 8088:8088 sshkp/aws:latest
+  docker pull sshkpm/aws:latest
+  sudo docker run -id -p 8088:8088 sshkpm/aws:latest
 EOF
 
   tags = {
